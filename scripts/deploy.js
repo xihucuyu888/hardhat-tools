@@ -15,7 +15,7 @@ async function main() {
   // We get the contract to deploy
 
   const Token = await ethers.getContractFactory("Token");
-  const token = await Token.deploy(99999999,"NASH","NASH");
+  const token = await Token.deploy(99999999,"USDT","USDT");
 
   await token.deployed();
 

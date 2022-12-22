@@ -10,6 +10,6 @@ contract Token is ERC20, Ownable {
     }
 
     function decimals() public view virtual override returns (uint8) {
-      return 18;
+      return 6;
     }
 }
