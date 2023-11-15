@@ -18,8 +18,12 @@ async function main() {
   const token = await Token.deploy(99999999999999,"USDT","USDT");
 
   await token.deployed();
+  const Faucet = await ethers.getContractFactory("Faucet");
+  const faucet = await Faucet.deploy(token.address);
 
   console.log("Token deployed to:", token.address);
+  console.log("Faucet deployed to:", faucet.address);
+  await token.transfer(faucet.address,10000000000000);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
