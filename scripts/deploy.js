@@ -19,7 +19,7 @@ async function main() {
 
   await token.deployed();
   const Faucet = await ethers.getContractFactory("Faucet");
-  const faucet = await Faucet.deploy(token.address);
+  const faucet = await Faucet.deploy(token.address,token.decimals());
 
   console.log("Token deployed to:", token.address);
   console.log("Faucet deployed to:", faucet.address);
