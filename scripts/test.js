@@ -16,15 +16,16 @@ async function main() {
   // We get the contract to deploy
 
   const Token = await ethers.getContractFactory("Token18");
-  const token = await Token.deploy(99999999999999,"COMP","COMP");
+  const token = Token.attach('0x998C09a1DcbCf70a55F2EC36E678FEaCd9f7e54B')
 
-  await token.deployed();
+  // await token.deployed();
   const Faucet = await ethers.getContractFactory("Faucet");
-  const faucet = await Faucet.deploy(token.address,token.decimals());
+  const faucet = Faucet.attach('0x34009AD7422E7E19753C3Fc728cA5f45093D5E9e')
 
   console.log("Token deployed to:", token.address);
   console.log("Faucet deployed to:", faucet.address);
   const amount = new BigNumber(9999999999999).times(new BigNumber(10).pow(await token.decimals()));
+  console.log(amount.toFixed())
   await token.transfer(faucet.address,amount.toFixed());
 }
 

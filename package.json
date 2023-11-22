@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.8.0",
+    "bignumber.js": "^9.1.2",
     "openzeppelin-solidity": "^4.6.0"
   }
 }
