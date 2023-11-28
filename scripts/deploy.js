@@ -15,15 +15,17 @@ async function main() {
 
   // We get the contract to deploy
 
+  const name = "IMX";
+
   const Token = await ethers.getContractFactory("Token18");
-  const token = await Token.deploy(99999999999999,"COMP","COMP");
+  const token = await Token.deploy(99999999999999,name,name);
 
   await token.deployed();
   const Faucet = await ethers.getContractFactory("Faucet");
   const faucet = await Faucet.deploy(token.address,token.decimals());
 
-  console.log("Token deployed to:", token.address);
-  console.log("Faucet deployed to:", faucet.address);
+  console.log(`${name} deployed to: ${token.address}`);
+  console.log(`${name}'s Faucet deployed to: ${faucet.address}`);
   const amount = new BigNumber(9999999999999).times(new BigNumber(10).pow(await token.decimals()));
   await token.transfer(faucet.address,amount.toFixed());
 }
